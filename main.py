@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends
 from utils import commom_verificacao_api_token
+from models import historias  # Importando a tabela "historias"
 from routers import llm_router, operacoes_router
-
 
 description = """
     Trabalho da disciplina de API da Pós-graduação em Sistemas e Agentes Inteligentes
@@ -11,7 +11,6 @@ description = """
     - /llm2: retorna uma resposta da OpenAI
     - /llm3: recebe as resposta de llm1 e llm2, mescla as respostas e gera uma nova
 """
-
 
 app = FastAPI(
     title="API para IA",
@@ -27,9 +26,9 @@ app = FastAPI(
         "name": "Do What The F*ck You Want To Public License",
         "url": "https://github.com/geeksam/wtf/blob/master/LICENSE",
     },
-    dependencies=[Depends(commom_verificacao_api_token)],
+    # dependencies=[Depends(commom_verificacao_api_token)],
 )
 
-
+# Incluindo os roteadores
 app.include_router(llm_router.router, prefix="/llm")
 app.include_router(operacoes_router.router, prefix="/operacoes")

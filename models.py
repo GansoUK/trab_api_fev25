@@ -1,6 +1,34 @@
 from enum import Enum
 from pydantic import BaseModel
 
+from sqlalchemy import Table, Column, Integer, String, JSON, DateTime, func, MetaData
+from sqlalchemy import create_engine, inspect
+from databases import Database
+
+DATABASE_URL = "sqlite:///./database.db"
+
+# Conexão e metadados
+database = Database(DATABASE_URL)
+metadata = MetaData()
+engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+
+# Verificar se a tabela 'historias' já existe
+if not inspect(engine).has_table("historias"):
+    historias = Table(
+        "historias",
+        metadata,
+        Column("id", Integer, primary_key=True),
+        Column("data_criacao", DateTime, server_default=func.now()),
+        Column("prompt", String),
+        Column("groq", JSON),
+        Column("openai", JSON),
+    )
+    metadata.create_all(engine)
+
+else:
+    # Caso a tabela já exista, apenas defina o objeto `historias` sem recriar
+    historias = Table("historias", metadata, autoload_with=engine)
+    
 
 class NomeGrupo(str, Enum):
     """

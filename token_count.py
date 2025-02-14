@@ -11,6 +11,7 @@ def count_tokens(text, model="gpt-4"):
     encoding = tiktoken.encoding_for_model(model)
     return len(encoding.encode(text))
 
+
 # Function to get response and token count
 def chat_with_gpt(prompt, model="gpt-4"):
     client = openai.OpenAI(api_key=OPENAI_API_KEY)
