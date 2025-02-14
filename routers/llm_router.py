@@ -19,6 +19,7 @@ async def gerar_historia(tema: str):
 
     response = executar_prompt(tema)    
 
+#gravando no banco
     query = insert(historias).values(
         prompt=tema,
         groq=response.get("GROQ"),

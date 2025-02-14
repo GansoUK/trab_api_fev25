@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
+# LIMPAR
 # API_TOKEN = int(os.getenv("API_TOKEN"))
 API_TOKEN = "123"
 
@@ -26,7 +26,7 @@ def obter_logger_e_configuracao():
     logger = logging.getLogger("fastapi")
     return logger
 
-
+''' LIMPAR
 def commom_verificacao_api_token(api_token: int):
     """
     Verifica se o token da API fornecido é válido.
@@ -39,6 +39,7 @@ def commom_verificacao_api_token(api_token: int):
     """
     if api_token != API_TOKEN:
         raise HTTPException(status_code=401, detail="Token inválido")
+'''
 
 import json
 def executar_prompt(tema: str):
