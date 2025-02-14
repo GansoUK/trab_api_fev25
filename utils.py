@@ -26,7 +26,7 @@ def obter_logger_e_configuracao():
     logger = logging.getLogger("fastapi")
     return logger
 
-''' LIMPAR
+# LIMPAR?? 
 def commom_verificacao_api_token(api_token: int):
     """
     Verifica se o token da API fornecido é válido.
@@ -39,7 +39,6 @@ def commom_verificacao_api_token(api_token: int):
     """
     if api_token != API_TOKEN:
         raise HTTPException(status_code=401, detail="Token inválido")
-'''
 
 import json
 def executar_prompt(tema: str):
