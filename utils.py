@@ -40,7 +40,7 @@ def commom_verificacao_api_token(api_token: int):
     if api_token != API_TOKEN:
         raise HTTPException(status_code=401, detail="Token inválido")
 
-import json
+# import json
 def executar_prompt(tema: str):
     """
     Gera uma história em português brasileiro sobre um tema específico usando a API Groq ou OpenAI.
